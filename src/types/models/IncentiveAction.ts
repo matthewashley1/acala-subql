@@ -50,6 +50,20 @@ export class IncentiveAction implements Entity {
     }
 
 
+    static async getByAccountId(accountId: string): Promise<IncentiveAction[] | undefined>{
+      
+      const records = await store.getByField('IncentiveAction', 'accountId', accountId);
+      return records.map(record => IncentiveAction.create(record));
+      
+    }
+
+    static async getByExtrinsicId(extrinsicId: string): Promise<IncentiveAction[] | undefined>{
+      
+      const records = await store.getByField('IncentiveAction', 'extrinsicId', extrinsicId);
+      return records.map(record => IncentiveAction.create(record));
+      
+    }
+
 
     static create(record){
         let entity = new IncentiveAction(record.id);

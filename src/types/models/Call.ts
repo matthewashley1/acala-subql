@@ -54,6 +54,27 @@ export class Call implements Entity {
     }
 
 
+    static async getBySignerId(signerId: string): Promise<Call[] | undefined>{
+      
+      const records = await store.getByField('Call', 'signerId', signerId);
+      return records.map(record => Call.create(record));
+      
+    }
+
+    static async getByExtrinsicId(extrinsicId: string): Promise<Call[] | undefined>{
+      
+      const records = await store.getByField('Call', 'extrinsicId', extrinsicId);
+      return records.map(record => Call.create(record));
+      
+    }
+
+    static async getByParentCallId(parentCallId: string): Promise<Call[] | undefined>{
+      
+      const records = await store.getByField('Call', 'parentCallId', parentCallId);
+      return records.map(record => Call.create(record));
+      
+    }
+
 
     static create(record){
         let entity = new Call(record.id);

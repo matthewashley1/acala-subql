@@ -46,6 +46,13 @@ export class TokenDayData implements Entity {
     }
 
 
+    static async getByTokenId(tokenId: string): Promise<TokenDayData[] | undefined>{
+      
+      const records = await store.getByField('TokenDayData', 'tokenId', tokenId);
+      return records.map(record => TokenDayData.create(record));
+      
+    }
+
 
     static create(record){
         let entity = new TokenDayData(record.id);

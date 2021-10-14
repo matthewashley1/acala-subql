@@ -62,6 +62,41 @@ export class DexAction implements Entity {
     }
 
 
+    static async getByAccountId(accountId: string): Promise<DexAction[] | undefined>{
+      
+      const records = await store.getByField('DexAction', 'accountId', accountId);
+      return records.map(record => DexAction.create(record));
+      
+    }
+
+    static async getByPoolId(poolId: string): Promise<DexAction[] | undefined>{
+      
+      const records = await store.getByField('DexAction', 'poolId', poolId);
+      return records.map(record => DexAction.create(record));
+      
+    }
+
+    static async getByToken0Id(token0Id: string): Promise<DexAction[] | undefined>{
+      
+      const records = await store.getByField('DexAction', 'token0Id', token0Id);
+      return records.map(record => DexAction.create(record));
+      
+    }
+
+    static async getByToken1Id(token1Id: string): Promise<DexAction[] | undefined>{
+      
+      const records = await store.getByField('DexAction', 'token1Id', token1Id);
+      return records.map(record => DexAction.create(record));
+      
+    }
+
+    static async getByExtrinsicId(extrinsicId: string): Promise<DexAction[] | undefined>{
+      
+      const records = await store.getByField('DexAction', 'extrinsicId', extrinsicId);
+      return records.map(record => DexAction.create(record));
+      
+    }
+
 
     static create(record){
         let entity = new DexAction(record.id);

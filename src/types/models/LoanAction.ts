@@ -50,6 +50,20 @@ export class LoanAction implements Entity {
     }
 
 
+    static async getByAccountId(accountId: string): Promise<LoanAction[] | undefined>{
+      
+      const records = await store.getByField('LoanAction', 'accountId', accountId);
+      return records.map(record => LoanAction.create(record));
+      
+    }
+
+    static async getByExtrinsicId(extrinsicId: string): Promise<LoanAction[] | undefined>{
+      
+      const records = await store.getByField('LoanAction', 'extrinsicId', extrinsicId);
+      return records.map(record => LoanAction.create(record));
+      
+    }
+
 
     static create(record){
         let entity = new LoanAction(record.id);

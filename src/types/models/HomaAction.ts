@@ -50,6 +50,20 @@ export class HomaAction implements Entity {
     }
 
 
+    static async getByAccountId(accountId: string): Promise<HomaAction[] | undefined>{
+      
+      const records = await store.getByField('HomaAction', 'accountId', accountId);
+      return records.map(record => HomaAction.create(record));
+      
+    }
+
+    static async getByExtrinsicId(extrinsicId: string): Promise<HomaAction[] | undefined>{
+      
+      const records = await store.getByField('HomaAction', 'extrinsicId', extrinsicId);
+      return records.map(record => HomaAction.create(record));
+      
+    }
+
 
     static create(record){
         let entity = new HomaAction(record.id);

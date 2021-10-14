@@ -68,6 +68,27 @@ export class PoolHourData implements Entity {
     }
 
 
+    static async getByPoolId(poolId: string): Promise<PoolHourData[] | undefined>{
+      
+      const records = await store.getByField('PoolHourData', 'poolId', poolId);
+      return records.map(record => PoolHourData.create(record));
+      
+    }
+
+    static async getByToken0Id(token0Id: string): Promise<PoolHourData[] | undefined>{
+      
+      const records = await store.getByField('PoolHourData', 'token0Id', token0Id);
+      return records.map(record => PoolHourData.create(record));
+      
+    }
+
+    static async getByToken1Id(token1Id: string): Promise<PoolHourData[] | undefined>{
+      
+      const records = await store.getByField('PoolHourData', 'token1Id', token1Id);
+      return records.map(record => PoolHourData.create(record));
+      
+    }
+
 
     static create(record){
         let entity = new PoolHourData(record.id);

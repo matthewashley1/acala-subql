@@ -46,6 +46,27 @@ export class OracleFeedRecord implements Entity {
     }
 
 
+    static async getByTokenId(tokenId: string): Promise<OracleFeedRecord[] | undefined>{
+      
+      const records = await store.getByField('OracleFeedRecord', 'tokenId', tokenId);
+      return records.map(record => OracleFeedRecord.create(record));
+      
+    }
+
+    static async getByAccountId(accountId: string): Promise<OracleFeedRecord[] | undefined>{
+      
+      const records = await store.getByField('OracleFeedRecord', 'accountId', accountId);
+      return records.map(record => OracleFeedRecord.create(record));
+      
+    }
+
+    static async getByBlockId(blockId: string): Promise<OracleFeedRecord[] | undefined>{
+      
+      const records = await store.getByField('OracleFeedRecord', 'blockId', blockId);
+      return records.map(record => OracleFeedRecord.create(record));
+      
+    }
+
 
     static create(record){
         let entity = new OracleFeedRecord(record.id);

@@ -50,6 +50,20 @@ export class NFTAction implements Entity {
     }
 
 
+    static async getByAccountId(accountId: string): Promise<NFTAction[] | undefined>{
+      
+      const records = await store.getByField('NFTAction', 'accountId', accountId);
+      return records.map(record => NFTAction.create(record));
+      
+    }
+
+    static async getByExtrinsicId(extrinsicId: string): Promise<NFTAction[] | undefined>{
+      
+      const records = await store.getByField('NFTAction', 'extrinsicId', extrinsicId);
+      return records.map(record => NFTAction.create(record));
+      
+    }
+
 
     static create(record){
         let entity = new NFTAction(record.id);

@@ -56,6 +56,27 @@ export class LoanParamsHistory implements Entity {
     }
 
 
+    static async getByCollateralId(collateralId: string): Promise<LoanParamsHistory[] | undefined>{
+      
+      const records = await store.getByField('LoanParamsHistory', 'collateralId', collateralId);
+      return records.map(record => LoanParamsHistory.create(record));
+      
+    }
+
+    static async getByStartAtBlockId(startAtBlockId: string): Promise<LoanParamsHistory[] | undefined>{
+      
+      const records = await store.getByField('LoanParamsHistory', 'startAtBlockId', startAtBlockId);
+      return records.map(record => LoanParamsHistory.create(record));
+      
+    }
+
+    static async getByEndAtBlockId(endAtBlockId: string): Promise<LoanParamsHistory[] | undefined>{
+      
+      const records = await store.getByField('LoanParamsHistory', 'endAtBlockId', endAtBlockId);
+      return records.map(record => LoanParamsHistory.create(record));
+      
+    }
+
 
     static create(record){
         let entity = new LoanParamsHistory(record.id);

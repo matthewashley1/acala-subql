@@ -38,6 +38,13 @@ export class Account implements Entity {
     }
 
 
+    static async getByCreateAtBlockId(createAtBlockId: string): Promise<Account[] | undefined>{
+      
+      const records = await store.getByField('Account', 'createAtBlockId', createAtBlockId);
+      return records.map(record => Account.create(record));
+      
+    }
+
 
     static create(record){
         let entity = new Account(record.id);

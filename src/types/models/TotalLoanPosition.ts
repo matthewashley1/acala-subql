@@ -40,6 +40,13 @@ export class TotalLoanPosition implements Entity {
     }
 
 
+    static async getByCollateralId(collateralId: string): Promise<TotalLoanPosition[] | undefined>{
+      
+      const records = await store.getByField('TotalLoanPosition', 'collateralId', collateralId);
+      return records.map(record => TotalLoanPosition.create(record));
+      
+    }
+
 
     static create(record){
         let entity = new TotalLoanPosition(record.id);

@@ -44,6 +44,27 @@ export class UserProvision implements Entity {
     }
 
 
+    static async getByPoolId(poolId: string): Promise<UserProvision[] | undefined>{
+      
+      const records = await store.getByField('UserProvision', 'poolId', poolId);
+      return records.map(record => UserProvision.create(record));
+      
+    }
+
+    static async getByToken0Id(token0Id: string): Promise<UserProvision[] | undefined>{
+      
+      const records = await store.getByField('UserProvision', 'token0Id', token0Id);
+      return records.map(record => UserProvision.create(record));
+      
+    }
+
+    static async getByToken1Id(token1Id: string): Promise<UserProvision[] | undefined>{
+      
+      const records = await store.getByField('UserProvision', 'token1Id', token1Id);
+      return records.map(record => UserProvision.create(record));
+      
+    }
+
 
     static create(record){
         let entity = new UserProvision(record.id);
