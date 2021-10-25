@@ -21,6 +21,9 @@ import {
   createNFTTransferHistory,
   createNFTBurnedHistory,
   createNFTBurnedWithRemarkHistory,
+  createHomaLiteRedeemRequestHistory,
+  createHomaLiteRedeemedHistory,
+  createHomaLiteRedeemCancelHistory,
 } from "./history";
 import { createDexPool, updatePoolByAddLiquidity, updatePoolByRemoveLiquidity, updatePoolBySwap } from "./dex/pool";
 import {
@@ -88,9 +91,13 @@ dispatch.batchRegist([
   { key: "incentives-DepositDexShare", handler: createDepositDexShareHistory },
   { key: "incentives-WithdrawDexShare", handler: createWithdrawDexShareHistory },
   { key: "incentives-PayoutRewards", handler: createClaimRewards },
+  { key: "incentives-ClaimRewards", handler: createClaimRewards },
 
   // homa
-  { key: 'homaLite-Minted', handler: createHomaLiteMintHistory }
+  { key: 'homaLite-Minted', handler: createHomaLiteMintHistory },
+  { key: 'homaLite-RedeemRequestCancelled', handler: createHomaLiteRedeemCancelHistory },
+  { key: 'homaLite-RedeemRequested', handler: createHomaLiteRedeemRequestHistory },
+  { key: 'homaLite-Redeemed', handler: createHomaLiteRedeemedHistory },
   // { key: "stakingPool-MintLiquid", handler: createMintLiquidHistory },
   // { key: "stakingPool-RedeemByUnbond", handler: createRedeemByUnbondHistory },
   // { key: "stakingPool-RedeemByFreeUnbonded", handler: createRedeemByFreeUnbonded },
