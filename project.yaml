@@ -369,7 +369,9 @@ network:
                 &a39
                 _enum:
                   Loans: CurrencyId
-                  Dex: CurrencyId
+                  DexIncentive: CurrencyId
+                  DexSaving: CurrencyId
+                  Homa: "Null"
               PoolIdV0:
                 &a40
                 _enum:
@@ -634,7 +636,7 @@ network:
           - minmax:
               &a67
               - 720
-              - null
+              - 722
             types:
               CallOf: Call
               DispatchTime: *a1
@@ -675,8 +677,13 @@ network:
                   AUSD: 1
                   DOT: 2
                   LDOT: 3
-                  RENBTC: 20
-                  CASH: 21
+                  XBTC: 4
+                  RENBTC: 5
+                  POLKABTC: 6
+                  PLM: 7
+                  PHA: 8
+                  HDT: 9
+                  BCG: 11
                   KAR: 128
                   KUSD: 129
                   KSM: 130
@@ -768,7 +775,6 @@ network:
               Keys: SessionKeys1
               Address: GenericMultiAddress
               LookupSource: GenericMultiAddress
-              AssetInstance: AssetInstanceV0
               MultiLocation: MultiLocationV0
               MultiAsset: MultiAssetV0
               Xcm: XcmV0
@@ -875,8 +881,9 @@ network:
               PoolId:
                 &a59
                 _enum:
-                  Loans: CurrencyId
+                  LoansIncentive: CurrencyId
                   DexIncentive: CurrencyId
+                  HomaIncentive: "Null"
                   DexSaving: CurrencyId
                   HomaValidatorAllowance: AccountId
               PoolIdV0: *a40
@@ -972,13 +979,7 @@ network:
                   AUSD: 1
                   DOT: 2
                   LDOT: 3
-                  XBTC: 4
-                  RENBTC: 5
-                  POLKABTC: 6
-                  PLM: 7
-                  PHA: 8
-                  HDT: 9
-                  BCG: 11
+                  RENBTC: 4
                   KAR: 128
                   KUSD: 129
                   KSM: 130
@@ -1114,7 +1115,8 @@ network:
                   AUSD: 1
                   DOT: 2
                   LDOT: 3
-                  RENBTC: 4
+                  RENBTC: 20
+                  CASH: 21
                   KAR: 128
                   KUSD: 129
                   KSM: 130
@@ -1208,6 +1210,7 @@ network:
           - minmax:
               &a75
               - 1008
+              - 1009
             types:
               CallOf: Call
               DispatchTime: *a1
@@ -1473,7 +1476,7 @@ network:
           - minmax:
               &a77
               - 1014
-              - 9999
+              - null
             types:
               CallOf: Call
               DispatchTime: *a1
@@ -1975,7 +1978,6 @@ network:
               Keys: SessionKeys1
               Address: GenericMultiAddress
               LookupSource: GenericMultiAddress
-              AssetInstance: AssetInstanceV0
               MultiLocation: MultiLocationV0
               MultiAsset: MultiAssetV0
               Xcm: XcmV0
@@ -3072,7 +3074,6 @@ network:
               Keys: SessionKeys1
               Address: GenericMultiAddress
               LookupSource: GenericMultiAddress
-              AssetInstance: AssetInstanceV0
               MultiLocation: MultiLocationV0
               MultiAsset: MultiAssetV0
               Xcm: XcmV0
@@ -3324,6 +3325,7 @@ network:
           - minmax: *a73
             types:
               CallOf: Call
+              DispatchTime: *a1
               ScheduleTaskIndex: u32
               DelayedOrigin: *a2
               AuthorityOrigin: DelayedOrigin
@@ -3686,6 +3688,7 @@ network:
           - minmax: *a77
             types:
               CallOf: Call
+              DispatchTime: *a1
               ScheduleTaskIndex: u32
               DelayedOrigin: *a2
               AuthorityOrigin: DelayedOrigin
