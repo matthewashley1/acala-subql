@@ -9,7 +9,7 @@ network:
     spec:
       acala:
         rpc:
-          &a58
+          &a62
           oracle:
             getValue:
               description: Retrieves the oracle value for a given key.
@@ -125,6 +125,7 @@ network:
             - generalCouncil
         types:
           - minmax:
+              &a63
               - 600
               - 699
             types:
@@ -202,6 +203,7 @@ network:
               AuctionId: u32
               AuctionIdOf: AuctionId
               TokenSymbol:
+                &a64
                 _enum:
                   - ACA
                   - AUSD
@@ -242,6 +244,7 @@ network:
                   - Acala
                   - Band
               TradingPair: (CurrencyId,  CurrencyId)
+              ChainBridgeChainId: u8
               PalletBalanceOf: Balance
               CollateralAuctionItem:
                 &a17
@@ -1204,7 +1207,6 @@ network:
               Response: ResponseV0
           - minmax:
               &a75
-              - 1008
               - 1008
             types:
               CallOf: Call
@@ -3308,8 +3310,9 @@ network:
               Ratio: FixedU128
               PublicKey: "[u8; 20]"
               DestAddress: Vec<u8>
-              DepositNonce: u64
-              ResourceId: "[u8; 32]"
+              PoolTokenIndex: u32
+              AssetId: CurrencyId
+              Keys: SessionKeys1
               Address: GenericMultiAddress
               LookupSource: GenericMultiAddress
               MultiLocation: MultiLocationV0
@@ -3669,8 +3672,9 @@ network:
               Ratio: FixedU128
               PublicKey: "[u8; 20]"
               DestAddress: Vec<u8>
-              DepositNonce: u64
-              ResourceId: "[u8; 32]"
+              PoolTokenIndex: u32
+              AssetId: CurrencyId
+              Keys: SessionKeys1
               Address: GenericMultiAddress
               LookupSource: GenericMultiAddress
               MultiLocation: MultiLocationV0
@@ -3703,6 +3707,8 @@ network:
               OrmlVestingSchedule: *a9
               VestingScheduleOf: OrmlVestingSchedule
               OrmlCurrencyId: CurrencyId
+              PoolInfo: *a10
+              CompactBalance: Compact<Balance>
               PoolInfoV0: *a11
               Share: u128
               OracleValue: Price
